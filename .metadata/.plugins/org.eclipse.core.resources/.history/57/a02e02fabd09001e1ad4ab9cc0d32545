@@ -1,0 +1,14 @@
+package org.sumit.spring.firstspringapp.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
+
+@Component
+public class AppConfiguration 
+{
+	@Bean
+	public User objUser()
+	{
+		return new User("")
+	}
+}

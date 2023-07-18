@@ -1,0 +1,28 @@
+package org.sumit.secondbootapp;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.sumit.secondbootapp.beans.User;
+
+@SpringBootApplication(scanBasePackages= {"org.sumit.secondbootapp.beans"})
+public class SecondBootAppApplication implements CommandLineRunner 
+{
+
+	@Autowired
+	ApplicationContext applicationContext;
+
+	public static void main(String[] args) {
+		SpringApplication.run(SecondBootAppApplication.class, args);
+	}
+	@Override
+	public void run(String... args) throws Exception 
+	{
+		User objUser = (User) applicationContext.getBean("objUser"); 
+		objUser.setUserName ("admin");
+		objUser.setPassword("Admin@123");
+		System.out.println(objUser);
+	}
+}

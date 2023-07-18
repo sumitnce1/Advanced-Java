@@ -1,0 +1,96 @@
+package org.sumit.boot.rest.bootresthiber.controller;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Optional;
+
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.sumit.boot.rest.bootresthiber.dto.ContactsDTO;
+import org.sumit.boot.rest.bootresthiber.entity.Contacts;
+import org.sumit.boot.rest.bootresthiber.repository.ContactRepository;
+
+@RestController
+@RequestMapping("/contacts")
+public class ContactsController {
+
+    @Autowired
+    ContactsRepository contactsRepository;
+
+    @GetMapping("/all")
+    public Iterator<ContactsDTO> all() {
+        Iterator<Contacts> iter = contactsRepository.findAll().iterator();
+        ArrayList<ContactsDTO> list = new ArrayList<>();
+
+        while (iter.hasNext()) {
+            Contacts objContacts = iter.next();
+            ContactsDTO dto = new ContactsDTO();
+            BeanUtils.copyProperties(objContacts, dto);
+            list.add(dto);
+        }
+
+        return list.iterator();
+    }
+
+    @GetMapping("/allCustom")
+    public Iterator<ContactsDTO> allCustom() {
+        Iterator<Contacts> iter = contactsRepository.customQuery().iterator();
+        ArrayList<ContactsDTO> list = new ArrayList<>();
+
+        while (iter.hasNext()) {
+            Contacts objContacts = iter.next();
+            ContactsDTO dto = new ContactsDTO();
+            BeanUtils.copyProperties(objContacts, dto);
+            list.add(dto);
+        }
+
+        return list.iterator();
+    }
+
+    @GetMapping("/allDetails/{pageNo}/{rowSize}")
+    public Iterator<ContactsDTO> allRecordsByPage(@PathVariable("pageNo") int pageNo, @PathVariable("rowSize") int rowSize) {
+        Pageable page = PageRequest.of(pageNo, rowSize, Sort.by("lastName"));
+        Iterator<Contacts> iter = contactsRepository.findAll(page).iterator();
+        ArrayList<ContactsDTO> list = new ArrayList<>();
+
+        while (iter.hasNext()) {
+            Contacts objContacts = iter.next();
+            ContactsDTO dto = new ContactsDTO();
+            BeanUtils.copyProperties(objContacts, dto);
+            list.add(dto);
+        }
+
+        return list.iterator();
+    }
+    @GetMapping("/detailsByName")
+    public Iterator<ContactsDTO> getDetailsNameLike(@RequestParam("name") String fName) {
+        Iterator<Contacts> iter = contactsRepository.getContactsLikeName(fName).iterator();
+        ArrayList<ContactsDTO> list = new ArrayList<>();
+
+        while (iter.hasNext()) {
+            Contacts objContacts = iter.next();
+            ContactsDTO dto = new ContactsDTO();
+            BeanUtils.copyProperties(objContacts, dto);
+            list.add(dto);
+        }
+
+        return list.iterator();
+    }
+    @GetMapping("/details/{cid}")
+    public ContactsDTO getDetails(@PathVariable("cid") int contactId) {
+        Optional<Contacts> optional = contactRepository.findById(contactId);
+
+        if (optional.isPresent()) {
+            Contacts objContacts = optional.get();
+            ContactsDTO dto = new ContactsDTO();
+            BeanUtils.copyProperties(objContacts, dto);
+            return dto;
+        }
+
+        return null;
+    }
+}

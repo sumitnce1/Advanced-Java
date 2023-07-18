@@ -1,0 +1,38 @@
+package org.sumit.boot.rest.firstrestapp.controllers;
+
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.sumit.boot.rest.firstrestapp.dto.UserDTO;
+
+@RestController
+@RequestMapping("/users")
+public class UserController 
+{
+	@PostMapping("/authenticate")
+	public boolean authenticate(@RequestParam("userName")String userName, @RequestParam("password") String password)
+	{
+		if (userName.equals("sumit") && password.equals("kumar"))
+			return true;
+		else
+			return false;
+	}
+	
+	@PostMapping("/authenticateUser")
+    public UserDTO authenticateUser(@RequestParam("userName") String userName,
+                                    @RequestParam("password") String password) {
+        if (userName.equals("sumit") && password.equals("kumar")) {
+            UserDTO dto = new UserDTO();
+            dto.setUserName(userName);
+            dto.setPassword(password);
+            dto.setEmail("sumit@cdac.com");
+            dto.setName("SUMIT KUMAR");
+            dto.setPhone("9570265840");
+            dto.setCity("Patna");
+            return dto;
+        } else {
+            return null;
+        }
+    }
+}

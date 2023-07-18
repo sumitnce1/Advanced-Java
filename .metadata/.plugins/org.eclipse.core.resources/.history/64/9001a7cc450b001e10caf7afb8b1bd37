@@ -1,0 +1,5 @@
+package org.sumit.mvcbootapp.controllers;
+
+public class UserController {
+
+}

@@ -1,0 +1,12 @@
+package org.sumit.mvcuserapp.dao;
+
+import org.sumit.mvcuserapp.beans.Product;
+
+public class ProductDAOImpl implements ProductDAO {
+
+	@Override
+	public boolean newProduct(Product objProduct) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+}

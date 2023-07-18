@@ -1,0 +1,10 @@
+package org.sumit.boot.rest.firstrestapp.dto;
+
+public class UserDTO {
+	
+	String userName;
+	String password;
+	String name;
+	
+
+}

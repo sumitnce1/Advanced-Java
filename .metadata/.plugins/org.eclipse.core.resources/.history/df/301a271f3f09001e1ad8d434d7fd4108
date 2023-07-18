@@ -1,0 +1,5 @@
+package org.sumitshop.hibernate.entity;
+
+public class Category {
+
+}

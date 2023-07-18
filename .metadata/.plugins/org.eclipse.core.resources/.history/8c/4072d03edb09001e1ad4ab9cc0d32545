@@ -1,0 +1,12 @@
+package org.sumit.spring.secondjdbcspring.dao;
+
+public class UserDAO {
+
+public interface UserDAO {
+    boolean addUser(String userName, String password, String name, String email);
+    List<User> allUsers();
+    User getUserByUserName(String userName);
+    boolean changePassword(String userName, String password);
+    boolean deleteUser(String userName);
+    boolean updateUser(String userName, String password, String name, String email);
+}

@@ -1,0 +1,9 @@
+package org.sumit.spring.secondjdbcspring.entity;
+
+public class Product {
+	int categoryId;
+	int categoryId;
+	String categoryName;
+	String categoryDescription;
+	String categoryImageUrl;
+}

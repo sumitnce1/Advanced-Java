@@ -1,0 +1,7 @@
+package org.sumitweb.hibernate.entity;
+
+import java.io.Serializable;
+
+public class ProductPrimaryKey implements Serializable {
+
+}

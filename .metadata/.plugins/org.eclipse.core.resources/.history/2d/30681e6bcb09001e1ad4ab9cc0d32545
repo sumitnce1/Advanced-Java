@@ -1,0 +1,35 @@
+package org.sumit.spring.firstspringapp.config;
+
+import org.sumit.spring.firstspringapp.beans.Account;
+import org.sumit.spring.firstspringapp.beans.AmazonAccount;
+import org.sumit.spring.firstspringapp.beans.FacebookAccount;
+import org.sumit.spring.firstspringapp.beans.User;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
+
+@Configuration
+@Pro
+public class AppConfiguration {
+	// Scope
+	// 1. singleton [default]
+	// 2. prototype [each call to getBean will create a new instance of this bean]
+	// 3. request [web application]
+	// 4. session [web application]
+	// 5. application [web application]
+    @Bean
+    @Scope("prototype")
+    public User objUser() {
+        return new User("default", "default@123", "Default User", "default@gmail.com");
+    }
+
+    @Bean
+    public Account facebookAccount() {
+        return new FacebookAccount();
+    }
+
+    @Bean
+    public Account amazonAccount() {
+        return new AmazonAccount();
+    }
+}

@@ -1,0 +1,13 @@
+package org.sumit.mvcuserapp.dao;
+
+import org.sumit.mvcuserapp.beans.Category;
+
+public class CategoryDAOImpl implements CategoryDAO {
+
+	@Override
+	public boolean newCategory(Category objCategory) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

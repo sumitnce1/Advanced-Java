@@ -1,0 +1,7 @@
+package org.sumit.mvcuserapp.controllers;
+
+
+@Cont
+public class UserController {
+
+}

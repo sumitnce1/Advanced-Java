@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<modules>
+  <module moduleId="org.eclipse.jst.jee.server:MvcUserApp" serverId="apache-tomcat-10.0.27 at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:FirstWebHibernet" serverId="apache-tomcat-10.0.27 at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:FistJSPApp" serverId="apache-tomcat-10.0.27 at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:OnlineShop" serverId="apache-tomcat-10.0.27 at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:FirstMvcApp" serverId="apache-tomcat-10.0.27 at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:OnlineShopWebApp" serverId="apache-tomcat-10.0.27 at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:FirtstWebHibernate" serverId="apache-tomcat-10.0.27 at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:OnlineShopping" serverId="apache-tomcat-10.0.27 at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:WebFundametal" serverId="apache-tomcat-10.0.27 at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:testwebapp" serverId="apache-tomcat-10.0.27 at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:SecondConnection" serverId="apache-tomcat-10.0.27 at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:FirstWebHibernateApp" serverId="apache-tomcat-10.0.27 at localhost"/>
+</modules>

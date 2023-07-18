@@ -1,0 +1,5 @@
+package org.sumit.spring.boot.competeapp.repository;
+
+public interface CategoryRepository extends{
+
+}

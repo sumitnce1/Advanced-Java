@@ -1,0 +1,11 @@
+package org.sumit.spring.boot.competeapp.services;
+
+public class MailServiceImpl implements MailService {
+
+	@Override
+	public boolean sendMail(String from, String to, String subject, String message) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

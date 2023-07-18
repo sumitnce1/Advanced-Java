@@ -1,0 +1,40 @@
+package org.sumit.spring.secondjdbcspring.dao;
+
+import java.util.List;
+
+import org.sumit.spring.secondjdbcspring.entity.Product;
+
+public class ProductDAOImpl implements ProductDAO {
+
+	@Override
+	public boolean addProduct(int categoryId, int productId, String productName, String productDescription,
+			double productPrice, String productImageUrl) {
+		int count = jdbcTemplate.update(sqlAddProduct, categoryId, productId, productName, categoryImageUrl);
+        return count > 0;
+	}
+
+	@Override
+	public List<Product> allProduct() {
+		return jdbcTemplate.query(sqlAllProduct, rowMapper);
+	}
+
+	@Override
+	public Product getproductByProductId(int productId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean deleteProduct(int productId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean updateProduct(int categoryId, int productId, String productName, String productDescription,
+			double productPrice, String productImageUrl) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

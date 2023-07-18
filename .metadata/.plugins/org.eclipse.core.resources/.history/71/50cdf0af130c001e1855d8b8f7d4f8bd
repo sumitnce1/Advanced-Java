@@ -1,0 +1,6 @@
+package org.sumit.boot.rest.bootresthiber.dao;
+
+public interface UserDAO {
+	public boolean authenticateUser(String userName, String Password);
+	public void creat
+}

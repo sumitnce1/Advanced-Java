@@ -1,0 +1,13 @@
+package org.sumitexam.app.SumitFinalExam;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class SumitFinalExamApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(SumitFinalExamApplication.class, args);
+	}
+
+}

@@ -1,0 +1,12 @@
+package org.sumit.spring.program;
+
+import org.sumit.spring.Users;
+
+public class Program {
+	public static void main(String[] args) {
+		
+		Users objUser = (Users) applicationContext.getBean("objUser");
+        System.out.println(objUser);
+	}
+
+}

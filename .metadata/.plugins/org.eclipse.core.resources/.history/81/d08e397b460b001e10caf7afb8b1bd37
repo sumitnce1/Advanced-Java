@@ -1,0 +1,24 @@
+package org.sumit.mvcbootapp.controllers;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class UserController {
+
+	
+	@RequestMapping("/login")
+	public void prepareLogin(Model data) {
+		data.addAttribute("objUser",new User());
+	}
+		
+	@RequestMapping("/authenticate")
+	public ModelAndView authenticate(@ModelAttribute("objUser")User objUser) {
+		if(objUser.getUserName().equals("atul") && objUser.getPassword().equals("123"))
+			return new ModelAndView("welcome","message","You are Authenticated.");
+		
+		else
+			return new ModelAndView("welcome","message","Authentication failure.");
+					
+	}
+}

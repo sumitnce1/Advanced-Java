@@ -1,0 +1,26 @@
+package org.sumit.spring.firstspringapp.beans;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class User {
+	String userName;
+	String password;	
+	String name;
+	String email;	
+}
+	public User() {
+		
+	}
+	public User(String userName, String password, String name, String email) {
+		super();
+		this.userName = userName;
+		this.password = password;
+		this.name = name;
+		this.email = email;
+	}
+	@Override
+	public String toString() {
+		return "User [userName=" + userName + ", password=" + password + ", name=" + name + ", email=" + email + "]";
+	}
+	

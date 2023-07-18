@@ -1,0 +1,5 @@
+package org.sumit.hiberbootapp.entity;
+
+public class Product {
+
+}

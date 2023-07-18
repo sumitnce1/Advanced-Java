@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="C:/Users/User/Desktop/AdvancedJava/jar/Spring 7 required/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/User/Desktop/AdvancedJava/jar/Spring 7 required/spring-aop-5.2.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/User/Desktop/AdvancedJava/jar/Spring 7 required/spring-aspects-5.2.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/User/Desktop/AdvancedJava/jar/Spring 7 required/spring-beans-5.2.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/User/Desktop/AdvancedJava/jar/Spring 7 required/spring-context-5.2.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/User/Desktop/AdvancedJava/jar/Spring 7 required/spring-context-support-5.2.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/User/Desktop/AdvancedJava/jar/Spring 7 required/spring-core-5.2.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/User/Desktop/AdvancedJava/jar/Spring 7 required/spring-expression-5.2.9.RELEASE.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

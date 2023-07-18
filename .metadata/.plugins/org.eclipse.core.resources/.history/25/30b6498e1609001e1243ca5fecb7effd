@@ -1,0 +1,8 @@
+
+
+import jakarta.servlet.annotation.WebServlet;
+
+@WebServlet("/AddProduct")
+public class AddProduct {
+
+}

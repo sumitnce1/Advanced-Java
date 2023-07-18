@@ -1,0 +1,8 @@
+package org.sumit.spring.secondjdbcspring.entity;
+
+public class User 
+{
+	String userName;
+	String pa
+
+}

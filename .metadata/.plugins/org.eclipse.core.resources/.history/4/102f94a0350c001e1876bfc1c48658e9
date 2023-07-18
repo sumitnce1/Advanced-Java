@@ -1,0 +1,8 @@
+package org.sumit.boot.rest.bootresthiber.entity;
+
+import jakarta.persistence.Entity;
+
+@Entity
+public class Contacts {
+
+}

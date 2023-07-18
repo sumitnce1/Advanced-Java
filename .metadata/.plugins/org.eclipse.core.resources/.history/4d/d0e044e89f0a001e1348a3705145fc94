@@ -1,0 +1,38 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>New Category</title>
+    <style>
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-size: 20px;
+        }
+        h1{
+         text-align:center;
+        }
+    </style>
+</head>
+<body>
+    <div class="center">
+     <pre>
+        <h1>New Category</h1>
+        <hr color='red' size='5'/>
+       
+        <form:form action="registerCategory" modelAttribute="objCategory">
+            CategoryId  : <form:input path="userName"/>
+            categoryName   : <form:password path="password"/>
+            categoryDescription       : <form:input path="name"/>
+            categoryImageUrl      : <form:input path="email"/>            
+            <form:button value="submit">Register</form:button>
+        </form:form>
+        <a href='login'>Go to Login Page</a>
+        </pre>
+    </div>
+</body>
+</html>

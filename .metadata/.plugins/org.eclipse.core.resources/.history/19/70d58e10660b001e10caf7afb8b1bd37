@@ -1,0 +1,36 @@
+package org.sumit.mvchiberbootapp.controllers;
+
+import org.hibernate.ObjectNotFoundException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+import org.sumit.mvchiberbootapp.entity.User;
+
+@Controller
+public class UserController 
+{
+	@Autowired
+	SessionFactory hibernateFactory;
+	
+	@RequestMapping("/login")
+	public void prepareLogin(Model data)
+	{
+		data.addAttribute("objUser", new User());
+	}
+	
+	@RequestMapping("/authenticate")
+	public ModelAndView authenticate(@ModelAttribute("objUser") User objUser) 
+	{
+		try(Session hibernateSession = hibernateFactory.openSession()){
+			User retrvUser = hibernateSession.load(User.class, objUser.getUserName())
+		}catch (ObjectNotFoundException exp) {
+			System.out.println(exp);
+		}
+		return new M
+	}
+}

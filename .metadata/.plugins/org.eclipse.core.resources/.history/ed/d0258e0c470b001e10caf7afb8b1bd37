@@ -1,0 +1,5 @@
+package org.sumit.mvcbootapp.beans;
+
+public class User {
+
+}

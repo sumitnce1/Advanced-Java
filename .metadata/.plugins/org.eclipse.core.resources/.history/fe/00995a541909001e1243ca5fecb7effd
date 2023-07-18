@@ -1,0 +1,5 @@
+package org.sumitweb.hibernate.entity;
+
+public class Product {
+
+}

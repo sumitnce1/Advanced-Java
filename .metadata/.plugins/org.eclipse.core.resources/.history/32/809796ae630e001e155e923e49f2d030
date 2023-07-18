@@ -1,0 +1,18 @@
+package org.sumitexam.app.SumitFinalExam;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+
+@SpringBootApplication(scanBasePackages = {"org.sumitexam.app.SumitFinalExam.controllers",
+"org.sumit.spring.boot.competeapp.services"})
+@EntityScan(basePackages = {"org.sumit.spring.boot.competeapp.entity"})
+@EnableJpaRepositories(basePackages = {"org.sumit.spring.boot.competeapp.repository"})
+public class SumitFinalExamApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(SumitFinalExamApplication.class, args);
+	}
+
+}

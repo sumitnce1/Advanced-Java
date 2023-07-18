@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+<title>AddProduct</title>
+</head>
+<body> 
+
+    <div class="container">
+            <div class="row justify-content-center align-items-center mt-2" style="height: 95vh;">
+                <div class="col-md-5 border p-5 bg-info rounded-5">  
+                    <h3 class="text-center">AddProduct</h3><hr>
+                    <form action="AddProduct" method="post" enctype="multipart/form-data">                        
+                        <div class="mb-1 mt-3">
+                            <label>ProductID:</label> 
+                            <input type="text" class="form-control" id="productId" placeholder="Enter ProductId" name="productId">
+                          </div>
+                          <div class="mb-1 mt-3">
+                            <label>ProductID:</label> 
+                            <input type="text" class="form-control" id="productId" placeholder="Enter productId" name="productId">
+                          </div>
+                          <div class="mb-1">
+                            <label>ProductName:</label>
+                            <input type="text" class="form-control" placeholder="Enter ProductName" id="productName" name="productName">
+                          </div>
+                          <div class="mb-1">
+                            <label>Product Description:</label>
+                            <input type="text" class="form-control" placeholder="Enter ProductDescription" id="productDescription" name="productDescription">
+                          </div>
+                          <div class="mb-1">
+                            <label>Product Price:</label>
+                            <input type="number" class="form-control" placeholder="Enter ProductPrice" id="productPrice" name="productPrice">
+                          </div>
+                          <div class="mb-1">
+                            <label>Image:</label>
+                            <input class="form-control" type="file" id="image" name="image">
+                          </div>			
+                          <div class="text-center mt-2">
+                         <input type="submit" value="Add Product" class="btn btn-success btn-lg w-75">
+                        </div>  
+                    </form>                                  
+                </div> 
+            </div>
+        </div>
+    </div>
+  </body>
+</html>
+
+

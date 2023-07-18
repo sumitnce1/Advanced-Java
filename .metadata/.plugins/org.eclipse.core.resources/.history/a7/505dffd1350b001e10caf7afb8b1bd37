@@ -1,0 +1,8 @@
+package org.sumit.hiberbootapp.entity;
+
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
+@EntitySca
+public class Category {
+
+}

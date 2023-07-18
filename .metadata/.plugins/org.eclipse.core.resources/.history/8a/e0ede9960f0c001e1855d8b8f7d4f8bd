@@ -1,0 +1,5 @@
+ackage org.sumit.boot.rest.bootresthiber.entity;
+
+public class User {
+
+}

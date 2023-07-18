@@ -1,0 +1,7 @@
+package org.sumit.boot.rest.bootresthiber.repository;
+
+import org.springframework.data.repository.CrudRepository;
+
+public interface UserRepository extends CrudRepository<T, ID> {
+
+}

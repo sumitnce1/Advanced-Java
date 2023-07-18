@@ -1,0 +1,19 @@
+package org.sumitshop.cart;
+
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+import jakarta.servlet.ServletContext;
+
+public class CartFactory {
+    private static SessionFactory hibernateFactory;
+
+    public static Cart getInstance(ServletContext application) {
+        if (hibernateFactory == null) {
+            Configuration hibernateConfiguration = new Configuration();
+            hibernateConfiguration.configure("hibernate.cfg.xml");
+            hibernateFactory = hibernateConfiguration.buildSessionFactory();
+        }
+        
+        return new HibernateCart(hibernateFactory);
+    }
+}

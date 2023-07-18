@@ -1,0 +1,17 @@
+package org.sumit.mvcuserapp.controllers;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.sumit.mvcuserapp.beans.User;
+
+@Controller
+public class UserController 
+{
+	@RequestMapping("/login")
+	public void prepareLogin(Model data)
+	{
+		data.addAttribute("objUser", new User());
+	}
+	@RequestMapping("/authenticate")
+}

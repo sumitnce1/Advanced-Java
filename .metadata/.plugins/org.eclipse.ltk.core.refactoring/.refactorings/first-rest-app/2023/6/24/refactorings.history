@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;UserDTO.java&apos; to &apos;boot-rest-hiber/src/main/java/org.sumit.boot.rest.bootresthiber.dto&apos;&#x0D;&#x0A;- Original project: &apos;first-rest-app&apos;&#x0D;&#x0A;- Destination element: &apos;boot-rest-hiber/src/main/java/org.sumit.boot.rest.bootresthiber.dto&apos;&#x0D;&#x0A;- Original element: &apos;org.sumit.boot.rest.firstrestapp.dto.UserDTO.java&apos;" description="Copy compilation unit" destination="=boot-rest-hiber/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;org.sumit.boot.rest.bootresthiber.dto" element1="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;org.sumit.boot.rest.firstrestapp.dto{UserDTO.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1686899263120" units="1" version="1.0"/>
+</session>

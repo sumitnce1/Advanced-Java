@@ -1,0 +1,30 @@
+<%@page import="org.sumit.mvchiberbootapp.entity.Product"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@ page import="java.util.List" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Insert title here</title>
+</head>
+<body>
+    Welcome <b><%= session.getAttribute("userName") %></b>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Image</th>
+            <th>Desc</th>
+            <th>Price</th>
+        </tr>
+        <% List<Product> productList = (List<Product>) request.getAttribute("data");
+        for (Product product : productList) { %>
+            <tr>
+                <td><%product.getProductName() %></td>
+                <td><%product.getProductImageUrl() %></td>
+                <td><%product.getProductDescription()%></td>
+                <td><%product.getProductPrice() %></td>
+            </tr>
+        <% } %>
+    </table>
+</body>
+</html>

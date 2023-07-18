@@ -1,0 +1,14 @@
+package org.sumit.spring.secondjdbcspring.dao;
+
+import java.util.List;
+
+import org.sumit.spring.secondjdbcspring.entity.Product;
+
+public interface ProductDAO {
+	boolean addCategory(int categoryId, int productIdString categoryName, String categoryDescription, String categoryImageUrl);
+    List<Product> allCategory();
+    Product getcategoryByCategoryId(int categoryId);
+    boolean deleteCategory(int categoryId);
+    boolean updateCategory(int categoryId, String categoryName, String categoryDescription, String categoryImageUrl);
+
+}

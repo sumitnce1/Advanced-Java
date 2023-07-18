@@ -1,0 +1,29 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Login</title>
+    <style>
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="center">
+        <pre>
+        <h2>Login</h2>
+        <form:form action="authenticate" modelAttribute="objUser">
+            User Name  : <form:input path="userName"/><br/>
+            Password   : <form:password path="password"/><br/>
+            <form:button type="submit" value="Login">Login</form:button>
+        </form:form>
+        </pre>
+    </div>
+</body>
+</html>

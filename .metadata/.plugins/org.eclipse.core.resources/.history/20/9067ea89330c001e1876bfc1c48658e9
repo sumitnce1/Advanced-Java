@@ -1,0 +1,30 @@
+package org.sumit.boot.rest.bootresthiber.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.sumit.boot.rest.bootresthiber.dao.UserDAO;
+import org.sumit.boot.rest.bootresthiber.dto.UserDTO;
+
+@RestController
+@RequestMapping("/users")
+public class UserController {
+
+	@Autowired
+	UserDAO userDAO;
+
+	@PostMapping("/authenticate")
+	public boolean authenticate(@RequestParam("userName") String userName, @RequestParam("password") String password) 
+	{
+		Optional<User> optional = userRepository.findById(userName);
+	}
+
+	@PostMapping("/newUser")
+	public String newUser(@RequestBody UserDTO userDTO) {
+		userDAO.createUser(userDTO);
+		return "created";
+	}
+}

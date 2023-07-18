@@ -1,0 +1,55 @@
+package org.sumitshop.servlets;
+
+import java.io.IOException;
+
+import org.sumitshop.cart.Cart;
+import org.sumitshop.cart.CartFactory;
+import org.sumitshop.servlets.CartItem;
+import org.sumitshop.hibernate.entity.Product;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
+
+import jakarta.servlet.ServletConfig;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
+@WebServlet("/AddCart")
+public class AddCart extends HttpServlet {
+    private SessionFactory hibernateFactory;
+
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+        ServletContext application = getServletContext();
+        hibernateFactory = (SessionFactory) application.getAttribute("hibernateFactory");
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        Cart cart = CartFactory.getCart(session);
+        int categoryId = Integer.parseInt(request.getParameter("categoryId"));
+        int productId = Integer.parseInt(request.getParameter("productId"));
+
+        Session hibernateSession = hibernateFactory.getCurrentSession();
+        hibernateSession.beginTransaction();
+
+        Query<Product> query = hibernateSession.createQuery("from Product p where p.prodId.categoryId=:categoryId and p.prodId.productId=:productId", Product.class);
+        query.setParameter("categoryId", categoryId);
+        query.setParameter("productId", productId);
+        Product product = query.uniqueResult();
+
+        hibernateSession.getTransaction().commit();
+
+        cart.addItem(new CartItem(product, 1));
+
+        response.sendRedirect("Cart.jsp");
+    }
+}

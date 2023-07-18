@@ -1,0 +1,10 @@
+package org.sumit.mvcuserapp.beans;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="category_1234")
+public class Category {
+	String
+}

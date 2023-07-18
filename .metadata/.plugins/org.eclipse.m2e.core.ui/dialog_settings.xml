@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="MavenProjectWizardLocationPage">
+		<list key="location">
+			<item value="C:\Users\User\Desktop\AdvancedJava\compete-app\compete-app\src\main\java\org\sumit\spring\boot\competeapp\CompeteAppApplication.java"/>
+			<item value="C:\Users\User\Desktop\AdvancedJava\FirstMvcApp"/>
+			<item value="C:\Users\User\Desktop\AdvancedJava\SecondJdbcSpring"/>
+			<item value="C:\Users\User\Desktop\AdvancedJava\FourtSpringApp\src\org\sumit\spring\config\AppConfiguration.java"/>
+			<item value="C:\Users\User\Desktop\AdvancedJava\FirstWebHibernateApp\src\main\webapp\addproduct.html"/>
+			<item value="C:\Users\User\Desktop\AdvancedJava\FirstWebHibernet\src\main\webapp\addcategory.html"/>
+			<item value="C:\Users\User\Desktop\AdvancedJava\SecondHibernetApp"/>
+			<item value="C:\Users\User\Desktop\AdvancedJava\Hibrenate"/>
+			<item value="C:\Users\User\Desktop\AdvancedJava\firstapp"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardArchetypePage">
+		<item key="catalog" value="All Catalogs"/>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="Maven2ProjectWizardArchifactPage">
+		<list key="package">
+			<item value="org.sumitwebrest.mvc.consume_rest"/>
+			<item value="org.sumitwebrest.mvc.consumerest"/>
+			<item value="org.sumituser.mvc.MvcUserApp"/>
+		</list>
+		<list key="groupId">
+			<item value="org.sumitwebrest.mvc"/>
+			<item value="org.sumituser.mvc"/>
+		</list>
+		<list key="artifactId">
+			<item value="consume-rest"/>
+			<item value="consumerest"/>
+			<item value="MvcUserApp"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardArtifactPage">
+		<list key="groupId">
+		</list>
+		<list key="name">
+		</list>
+		<list key="artifactId">
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+	</section>
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="C:\Users\User\Desktop\AdvancedJava"/>
+			<item value="C:\Users\User\Desktop\AdvancedJava\"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+</section>

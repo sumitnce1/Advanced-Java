@@ -1,0 +1,5 @@
+package org.sumit.spring.secondjdbcspring.dao;
+
+public interface ProductDAO {
+
+}

@@ -1,0 +1,54 @@
+<%@page import="java.sql.Connection"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="java.sql.PreparedStatement" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.SQLException" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+</head>
+<body>
+    <%
+        try {
+            PreparedStatement psProductsByCategoryId;
+            Connection connection = (Connection) application.getAttribute("globalConnection");
+            psProductsByCategoryId = connection.prepareStatement("SELECT * FROM products_1234 WHERE categoryId=?");
+
+            String tmpCategoryId = request.getParameter("categoryId");
+            int categoryId = Integer.parseInt(tmpCategoryId);
+
+            psProductsByCategoryId.setInt(1, categoryId);
+
+            try (ResultSet result = psProductsByCategoryId.executeQuery()) {
+                %>
+                Welcome User <b><%= session.getAttribute("userName") %></b>.
+                <br>
+                <table border='1'>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Image</th>
+                        <th>Add to Cart</th>
+                    </tr>
+                    <% while (result.next()) { %>
+                        <tr>
+                            <td><%= result.getString("productName") %></td>
+                            <td><%= result.getString("productDescription") %></td>
+                            <td><%= result.getString("productPrice") %></td>
+                            <td><img src='Images/<%= result.getString("productImageUrl") %>' height='60px' width='60px' /></td>
+                            <td><a href='AddCart?categoryId=<%= categoryId %>&productId=<%= result.getInt("productId") %>'>Add to Cart</a></td>
+                        </tr>
+                    <% } %>
+                </table>
+                <%
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new ServletException("Failed to fetch products from the database");
+        }
+    %>
+</body>
+</html>

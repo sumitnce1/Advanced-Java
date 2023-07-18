@@ -1,0 +1,94 @@
+package org.sumit.servlets;
+
+import static org.sumit.cart.CartFactory.getInstance;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import org.sumit.cart.Cart;
+import org.sumit.cart.CartFactory;
+import org.sumit.servlets.CartItem;
+
+import jakarta.servlet.ServletConfig;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
+@WebServlet("/AddCart")
+public class AddCart extends HttpServlet {
+    Connection connection;
+    PreparedStatement psProductDetails;
+
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+        try {
+            ServletContext application = getServletContext();
+            connection = (Connection) application.getAttribute("globalConnection");
+            psProductDetails = connection.prepareStatement("SELECT productPrice, productName, productImageUrl FROM products_1234 WHERE categoryId=? AND productId=?");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void destroy() {
+        try {
+            if (psProductDetails != null)
+                psProductDetails.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        if (session == null) {
+            response.sendRedirect("login.html");
+            return;
+        }
+
+        try {
+            String tmp = request.getParameter("categoryId");
+            int categoryId = Integer.parseInt(tmp);
+
+            tmp = request.getParameter("productId");
+            int productId = Integer.parseInt(tmp);
+
+            psProductDetails.setInt(1, categoryId);
+            psProductDetails.setInt(2, productId);
+
+            try (ResultSet result = psProductDetails.executeQuery()) {
+                if (result.next()) {
+                    float productPrice = result.getFloat("productPrice");
+                    String productName = result.getString("productName");
+                    String productImageUrl = result.getString("productImageUrl");
+                    CartItem item = new CartItem(categoryId, productId, productName, productPrice, productImageUrl);
+
+                    Cart cart = (Cart) session.getAttribute("cart");
+                    if (cart == null) {
+                        cart = getInstance(getServletContext());
+                        session.setAttribute("cart", cart);
+                    }
+
+                    cart.add(item);
+                }
+            }
+            response.sendRedirect("ListCart");
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}

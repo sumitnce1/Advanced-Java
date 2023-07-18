@@ -1,0 +1,9 @@
+package org.sumitexam.app.SumitFinalExam.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import org.sumitexam.app.SumitFinalExam.entity.MobilePhone;
+@Repository
+public interface MobilePhoneRepository extends JpaRepository<MobilePhone, Integer> {
+
+}

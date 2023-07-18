@@ -1,0 +1,27 @@
+package org.sumit.spring.secondjdbcspring.entity;
+
+public class Product {
+	int categoryId;
+	int productId;
+	String productName;
+	String productDescription;
+	double productPrice;
+	String productImageUrl;
+	
+	public Product() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Product(int categoryId, int productId, String productName, String productDescription, double productPrice,
+			String productImageUrl) {
+		super();
+		this.categoryId = categoryId;
+		this.productId = productId;
+		this.productName = productName;
+		this.productDescription = productDescription;
+		this.productPrice = productPrice;
+		this.productImageUrl = productImageUrl;
+	}
+	
+	
+}

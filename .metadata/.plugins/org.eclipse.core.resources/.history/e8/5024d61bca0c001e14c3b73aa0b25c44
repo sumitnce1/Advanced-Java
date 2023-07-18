@@ -1,0 +1,8 @@
+package org.sumit.spring.boot.competeapp.services;
+
+import org.sumit.spring.boot.competeapp.dto.CategoryDTO;
+
+public interface CategoryService {
+	boolean addNewCategoy(CategoryDTO categoryDTO);
+	List<CategoryDTO> allCategories()
+}

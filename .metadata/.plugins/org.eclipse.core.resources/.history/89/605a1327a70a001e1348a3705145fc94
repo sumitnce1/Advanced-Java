@@ -1,0 +1,19 @@
+package org.sumit.mvcuserapp.dao;
+
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.sumit.mvcuserapp.beans.Product;
+
+@Repository
+public class ProductDAOImpl implements ProductDAO {
+
+	@Autowired
+    SessionFactory hibernateFactory;
+	
+	@Override
+	public boolean newProduct(Product objProduct) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+}

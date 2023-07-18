@@ -1,0 +1,19 @@
+package org.sumit.boot.rest.bootresthiber.dao;
+
+import org.sumit.boot.rest.bootresthiber.dto.UserDTO;
+
+public class UserDAOImpl implements UserDAO {
+
+	@Override
+	public boolean authenticateUser(String userName, String Password) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void createUser(UserDTO objUser) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

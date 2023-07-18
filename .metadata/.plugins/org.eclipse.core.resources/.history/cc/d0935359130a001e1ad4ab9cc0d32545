@@ -1,0 +1,103 @@
+package org.sumit.spring.secondjdbcspring.dao;
+
+import java.util.Collections;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.core.env.Environment;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
+import org.sumit.spring.secondjdbcspring.entity.Category;
+
+@Repository
+@Qualifier("categoryDAO")
+public class CategoryDAOImpl implements CategoryDAO {
+    
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+    
+    @Autowired
+    private Environment env;
+    
+    private RowMapper<Category> rowMapper;
+    private String sqlAddCategory;
+    private String sqlDeleteCategory;
+    private String sqlUpdateCategory;
+    private String sqlAllCategory;
+    private String sqlCategoryByCategoryId;
+
+    @PostConstruct
+    public void initialize() {
+        sqlAddCategory = env.getProperty("sql.addCategory");
+        sqlDeleteCategory = env.getProperty("sql.deleteCategory");
+        sqlUpdateCategory = env.getProperty("sql.updateCategory");
+        sqlAllCategory = env.getProperty("sql.allCategory");
+        sqlCategoryByCategoryId = env.getProperty("sql.categoryByCategoryId");
+
+        rowMapper = (resultSet, rowNumber) -> {
+            Category category = new Category();
+            category.setCategoryId(resultSet.getInt("categoryId"));
+            category.setCategoryName(resultSet.getString("categoryName"));
+            category.setCategoryDescription(resultSet.getString("categoryDescription"));
+            category.setCategoryImageUrl(resultSet.getString("categoryImageUrl"));
+            return category;
+        };
+    }
+
+    @Override
+    public boolean addCategory(int categoryId, String categoryName, String categoryDescription, String categoryImageUrl) {
+        try {
+            jdbcTemplate.update(sqlAddCategory, categoryId, categoryName, categoryDescription, categoryImageUrl);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public List<Category> allCategory() {
+        try {
+            return jdbcTemplate.query(sqlAllCategory, rowMapper);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Collections.emptyList();
+        }
+    }
+
+    @Override
+    public Category getCategoryByCategoryId(int categoryId) {
+        try {
+            return jdbcTemplate.queryForObject(sqlCategoryByCategoryId, new Object[]{categoryId}, rowMapper);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public boolean deleteCategory(int categoryId) {
+        try {
+            jdbcTemplate.update(sqlDeleteCategory, categoryId);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public boolean updateCategory(int categoryId, String categoryName, String categoryDescription, String categoryImageUrl) {
+        try {
+            jdbcTemplate.update(sqlUpdateCategory, categoryName, categoryDescription, categoryImageUrl, categoryId);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+}

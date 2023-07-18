@@ -1,0 +1,15 @@
+package org.sumit.spring.secondjdbcspring.dao;
+
+import java.util.List;
+
+import org.sumit.spring.secondjdbcspring.entity.Category;
+
+public interface CategoryDAO {
+	boolean addUser(String categoryId, String categoryName, String categoryDescription, String categoryImageUrl);
+    List<Category> allCategory();
+    Category getUserByUserName(String categoryId);
+    boolean changePassword(String userName, String password);
+    boolean deleteUser(String userName);
+    boolean updateUser(String categoryId, String categoryName, String categoryDescription, String categoryImageUrl);
+
+}

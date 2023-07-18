@@ -1,0 +1,8 @@
+package org.sumit.spring;
+
+public class Users {
+	String userName;
+	
+	String password;
+	
+}

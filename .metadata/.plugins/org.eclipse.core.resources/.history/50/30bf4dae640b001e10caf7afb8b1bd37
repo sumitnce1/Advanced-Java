@@ -1,0 +1,13 @@
+package org.sumit.mvchiberbootapp;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication()
+public class MvcHiberBootAppApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(MvcHiberBootAppApplication.class, args);
+	}
+
+}

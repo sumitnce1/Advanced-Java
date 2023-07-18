@@ -1,0 +1,243 @@
+package org.sumit.spring.secondjdbcspring;
+
+import java.util.InputMismatchException;
+import java.util.List;
+import java.util.Scanner;
+
+import org.sumit.spring.secondjdbcspring.config.AppConfiguration;
+import org.sumit.spring.secondjdbcspring.dao.CategoryDAO;
+import org.sumit.spring.secondjdbcspring.dao.ProductDAO;
+import org.sumit.spring.secondjdbcspring.dao.UserDAO;
+import org.sumit.spring.secondjdbcspring.entity.Category;
+import org.sumit.spring.secondjdbcspring.entity.Product;
+import org.sumit.spring.secondjdbcspring.entity.User;
+import org.springframework.beans.BeansException;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.dao.EmptyResultDataAccessException;
+
+public class App {
+    public static void main(String[] args) {
+        try (AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(
+                AppConfiguration.class);
+                Scanner scanner = new Scanner(System.in);) {
+            UserDAO userDAO = (UserDAO) applicationContext.getBean("userDAO");
+            CategoryDAO categoryDAO = (CategoryDAO) applicationContext.getBean("categoryDAO");
+            ProductDAO productDAO = (ProductDAO) applicationContext.getBean("productDAO");
+            int choice = 0;
+            while (choice != 14) {
+                System.out.println("Enter Choice[1to6 Users & 7-10 Category & 10-12 Product] : ");
+                choice = scanner.nextInt();
+                scanner.nextLine();
+                switch (choice) {
+                    case 1:
+                    	System.out.println("----Add New User-----\n");
+                        System.out.println("Enter the username");
+                        String userName = scanner.nextLine();
+                        System.out.println("Enter the password");
+                        String password = scanner.nextLine();
+                        System.out.println("Enter the name");
+                        String name = scanner.nextLine();
+                        System.out.println("Enter the email");
+                        String email = scanner.nextLine();
+                        System.out.println("Enter the phone");
+                        String phone = scanner.nextLine();
+                        System.out.println("Enter the city");
+                        String city = scanner.nextLine();
+                        userDAO.addUser(userName, password, name, email, phone, city);
+                        System.out.println("Wow! New User Added in Database :)");
+                        break;
+                    case 2:
+                    	System.out.println("----Find Individual User-----\n");
+                        System.out.println("Enter The Username: ");
+                        userName = scanner.next();
+                        User objUser = userDAO.getUserByUserName(userName);
+                        System.out.println(objUser);
+                        break;
+                    case 3:
+                    	System.out.println("\u001B[31m----See AllUsers-----\n\u001B[0m");
+                        List<User> list = userDAO.allUsers();
+                        for (User user : list) {
+                            System.out.println("\u001B[33m"+ user +"u001B[0m");
+                        }
+                        break;
+                    case 4:
+                    	System.out.println("----User Password Change-----\n");
+                        System.out.println("Enter The Username: ");
+                        userName = scanner.next();
+                        System.out.println("Enter The New Password: ");
+                        String newPassword = scanner.next();
+                        boolean passwordChanged = userDAO.changePassword(userName, newPassword);
+                        if (passwordChanged) {
+                            System.out.println("Wow! Password Changed Successfully. :)");
+                        } else {
+                            System.out.println("Opps! Failed to Change password Try Again.");
+                        }
+                        break;
+                    case 5:
+                        System.out.println("----Delete Individual User-----\n");
+                        System.out.println("Enter the Username: ");
+                        String userNames = scanner.next();
+                        try {
+                            User objUsers = userDAO.getUserByUserName(userNames);
+                            if (objUsers != null) {
+                                System.out.println(objUsers);
+                                boolean delUser = userDAO.deleteUser(userNames);
+                                if (delUser) {
+                                    System.out.println("\u001B[32mUser deleted successfully.\u001B[0m");
+                                } else {
+                                    System.out.println("\u001B[31mFailed to delete user.\u001B[0m");
+                                }
+                            } else {
+                                System.out.println("\u001B[31mOpps! User not found. :(\u001B[0m");
+                            }
+                        } catch (EmptyResultDataAccessException e) {
+                            System.out.println("\u001B[31mOpps! User not found. :( \u001B[0m");
+                        }
+                        break;
+                    case 6:
+                        System.out.println("----Update User-----\n");
+                        System.out.println("Enter the username: ");
+                        String userNamess = scanner.nextLine();
+                        User existingUser = userDAO.getUserByUserName(userNamess);
+                        if (existingUser != null) {
+                            try {
+                                System.out.println("Enter the new password: ");
+                                String passwords = scanner.nextLine();
+                                System.out.println("Enter the new name: ");
+                                String names = scanner.nextLine();
+                                System.out.println("Enter the new email: ");
+                                String emails = scanner.nextLine();
+                                
+                                System.out.println("Enter the new phone: ");
+                                double phones = scanner.nextDouble();
+                                scanner.nextLine();
+                                System.out.println("Enter the new city: ");
+                                String citys = scanner.next();
+
+                                boolean updatUser = userDAO.updateUser(userNamess, passwords, names, emails, phones, citys);
+                                if (updatUser) {
+                                    System.out.println("\u001B[33mUser updated successfully.\u001B[0m");
+                                } else {
+                                    System.out.println("\u001B[33mFailed to update user.\u001B[0m");
+                                }
+                            } catch (Exception e) {
+                                System.out.println("\u001B[31mAn error geting updating the user: " + e.getMessage() + "\u001B[0m");
+                            }
+                        } else {
+                            System.out.println("\u001B[33mOpps! User not found.\u001B[0m");
+                        }
+                        break;
+                    
+                    case 7:
+                    	System.out.println("----Add New Category-----\n");
+                        System.out.println("Enter the CategoryID: ");
+                        int categoryID = scanner.nextInt();
+                        scanner.nextLine();
+                        System.out.println("Enter the categoryName: ");
+                        String categoryName = scanner.nextLine();
+                        System.out.println("Enter the categoryDescription: ");
+                        String categoryDescription = scanner.nextLine();
+                        System.out.println("Enter the categoryImageUrl: ");
+                        String categoryImageUrl = scanner.nextLine();
+                        categoryDAO.addCategory(categoryID, categoryName, categoryDescription, categoryImageUrl);
+                        System.out.println("Wow! Category Added in Database :)");
+                        break;
+                    case 8:
+                    	System.out.println("----Find Individual Category-----\n");
+                        System.out.println("Enter the CategoryID: ");
+                        int categoryId = scanner.nextInt();
+                        Category objCategory = categoryDAO.getcategoryByCategoryId(categoryId);
+                        System.out.println(objCategory);
+                        break;
+                    case 9:
+                    	System.out.println("----See AllCategory-----");
+                        List<Category> cat = categoryDAO.allCategory();
+                        for (Category category : cat) {
+                            System.out.println(category);
+                        }
+                        break;
+                    case 10:
+                        System.out.println("----Delete individual Category-----");
+                        System.out.println("Enter the Category ID: ");
+                        try {
+                            int categoryIds = scanner.nextInt();
+                            boolean catDelete = categoryDAO.deleteCategory(categoryIds);
+                            if (catDelete) {
+                                System.out.println("\u001B[32mCategory deleted successfully.\u001B[0m");
+                            } else {
+                                System.out.println("\u001B[31mOpps! Failed to delete category.\u001B[0m");
+                            }
+                        } catch (InputMismatchException e) {
+                            System.out.println("\u001B[31mInvalid input. Please enter a valid Category ID.\u001B[0m");
+                        }
+                        break;
+                    case 11:
+                        System.out.println("----Update Category-----");
+                        System.out.println("Enter the CategoryID: ");
+                        int categoryIds = scanner.nextInt();
+                        scanner.nextLine();
+                        System.out.println("Enter the categoryName: ");
+                        String categoryNames = scanner.nextLine();
+                        System.out.println("Enter the categoryDescription: ");
+                        String categoryDescriptions = scanner.nextLine();
+                        System.out.println("Enter the categoryImageUrl: ");
+                        String categoryImageUrls = scanner.nextLine();
+                        
+                        try {
+                            boolean isUpdated = categoryDAO.updateCategory(categoryIds, categoryName, categoryDescription, categoryImageUrl);
+                            if (isUpdated) {
+                                System.out.println("\u001B[33mCategory updated successfully.\u001B[0m");
+                            } else {
+                                System.out.println("\u001B[33mFailed to update category.\u001B[0m");
+                            }
+                        } catch (Exception e) {
+                            System.out.println("\u001B[31mAn error occurred while updating the category: " + e.getMessage() + "\u001B[0m");
+                        }
+                        break;
+                    case 12:
+                    	System.out.println("----Add New Products-----\n");
+                    	System.out.println("Enter the CategoryID: ");
+                        int categoryIds = scanner.nextInt();
+                        System.out.println("Enter the ProductID: ");
+                        int productID = scanner.nextInt();
+                        scanner.nextLine();
+                        System.out.println("Enter the productName: ");
+                        String productName = scanner.nextLine();
+                        System.out.println("Enter the productDescription: ");
+                        String productDescription = scanner.nextLine();
+                        System.out.println("Enter the productPrice");
+                        double productPrice = scanner.nextDouble();
+                        scanner.nextLine();
+                        System.out.println("Enter the categoryImageUrl: ");
+                        String productImageUrl = scanner.nextLine();
+                        productDAO.addProduct(categoryIds,productID, productName, productDescription, productPrice, productImageUrl);
+                        System.out.println("Wow! Products Added in Database :)");
+                        break;
+                    case 13:
+                    	System.out.println("----Find Individual Products-----\n");
+                    	System.out.print("Enter the Product ID: ");
+	            	    int productId = scanner.nextInt();
+	            	    Product prods = productDAO.getproductByProductId(productId);
+	            	    if (prods != null) 
+	            	    	{
+	            	        System.out.println(prods);
+	            	    	} 
+	            	    else {
+	            	        System.out.println("Opps! Products Not Found in Database :( ");
+	            	    	}
+                        break;
+                    case 14:
+                    	System.out.println("----See All Products-----\n");
+                        List<Product> prod = productDAO.allProduct();
+                        for (Product products : prod) {
+                            System.out.println(products);
+                        }
+                        break;
+                        
+                }
+            }
+        } catch (BeansException e) {
+            e.printStackTrace();
+        }
+    }
+}

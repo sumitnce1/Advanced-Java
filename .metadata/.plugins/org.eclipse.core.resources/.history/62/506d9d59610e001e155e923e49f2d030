@@ -1,0 +1,12 @@
+package org.sumitexam.app.SumitFinalExam.entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="mobilephone_0016")
+public class MobilePhone 
+{
+	phoneId
+	phoneName VARCHAR(100),phoneMemory VARCHAR(50),phoneOS VARCHAR(50),phoneSize VARCHAR(10)
+}

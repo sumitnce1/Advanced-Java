@@ -1,0 +1,43 @@
+package org.sumit.boot.rest.bootresthiber.dao;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.sumit.boot.rest.bootresthiber.dto.UserDTO;
+import org.sumit.boot.rest.bootresthiber.entity.User;
+
+@Repository
+public class UserDAOImpl implements UserDAO {
+
+    @Autowired
+    SessionFactory hibernateFactory;
+
+    @Override
+    public boolean authenticateUser(String userName, String password) {
+        try (Session hibernateSession = hibernateFactory.openSession()) {
+            Query<User> query = hibernateSession.getNamedQuery("authenticate");
+            query.setParameter(1, userName);
+            query.setParameter(2, password);
+            query.getSingleResult();
+            return true;
+        } catch (HibernateException e) {
+            System.out.println(e);
+            return false;
+        }
+    }
+
+    @Override
+    public void createUser(UserDTO userDTO) {
+        try (Session hibernateSession = hibernateFactory.openSession()) {
+            User objUser = new User();
+            BeanUtils.copyProperties(userDTO, objUser);
+            hibernateSession.beginTransaction();
+            hibernateSession.save(objUser);
+            hibernateSession.getTransaction().commit();
+        }
+    }
+}

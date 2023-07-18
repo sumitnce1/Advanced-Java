@@ -1,0 +1,70 @@
+package org.sumitshop.servlets;
+
+import java.io.IOException;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import org.sumitshop.cart.Cart;
+import org.sumitshop.servlets.CartItem;
+
+@WebServlet("/AddCart")
+public class AddCart extends HttpServlet {
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        Cart cart = (Cart) session.getAttribute("cart");
+
+        if (cart == null) {
+            cart = new Cart();
+            session.setAttribute("cart", cart);
+        }
+
+        int categoryId = Integer.parseInt(request.getParameter("categoryId"));
+        int productId = Integer.parseInt(request.getParameter("productId"));
+        String productName = getProductById(categoryId, productId);
+        double productPrice = getProductPriceById(categoryId, productId);
+        String productImageUrl = getProductImageUrlById(categoryId, productId);
+
+        CartItem item = new CartItem();
+        cart.addItem(item);
+
+        response.sendRedirect("ListCart");
+    }
+
+    // Method to fetch the product name by category and product IDs
+    private String getProductById(int categoryId, int productId) {
+        // Replace this with your own implementation to fetch the product name from the database
+        // You can use Hibernate or any other ORM framework to perform database operations
+        // Return the product name based on the category and product IDs
+        // Example:
+        String productName = ""; // Placeholder, replace with actual database query
+        // Your database query to fetch the product name goes here
+        return productName;
+    }
+
+    // Method to fetch the product price by category and product IDs
+    private double getProductPriceById(int categoryId, int productId) {
+        // Replace this with your own implementation to fetch the product price from the database
+        // You can use Hibernate or any other ORM framework to perform database operations
+        // Return the product price based on the category and product IDs
+        // Example:
+        double productPrice = 0.0; // Placeholder, replace with actual database query
+        // Your database query to fetch the product price goes here
+        return productPrice;
+    }
+
+    // Method to fetch the product image URL by category and product IDs
+    private String getProductImageUrlById(int categoryId, int productId) {
+        // Replace this with your own implementation to fetch the product image URL from the database
+        // You can use Hibernate or any other ORM framework to perform database operations
+        // Return the product image URL based on the category and product IDs
+        // Example:
+        String imageUrl = ""; // Placeholder, replace with actual database query
+        // Your database query to fetch the product image URL goes here
+        return imageUrl;
+    }
+}

@@ -1,0 +1,8 @@
+package org.sumit.spring.program;
+
+pport org.fi.spring.Users; port org.springframework.context.support. ClassPathXml ApplicationContext
+blic class Program {
+public static void main(String[] args)
+try(ClassPathXml ApplicationContext application context = new class
+I Users objUser = (Users) applicationContext.getBean("objUser"); System.out.println(objUser);
+}

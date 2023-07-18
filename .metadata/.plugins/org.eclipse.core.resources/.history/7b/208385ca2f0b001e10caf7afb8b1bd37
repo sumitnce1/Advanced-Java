@@ -1,0 +1,5 @@
+package org.sumit.secondbootapp.beans;
+
+public class User {
+
+}

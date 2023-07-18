@@ -1,0 +1,17 @@
+package org.sumitexam.app.SumitFinalExam.repository;
+package org.sumit.spring.boot.competeapp.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
+import org.sumit.spring.boot.competeapp.entity.MobilePhone;
+
+public interface MobilePhoneRepository extends JpaRepository<MobilePhone, Integer> {
+
+    @Transactional
+    @Modifying
+    @Query(value = "UPDATE mobilephone_0016 SET phonename = :phoneName, phonememory = :phoneMemory, phoneos = :phoneOS, phonesize = :phoneSize WHERE phoneid = :mobileId", nativeQuery = true)
+    void updateMobileDetail(@Param("mobileId") int mobileId, @Param("phoneName") String phoneName, @Param("phoneMemory") String phoneMemory, @Param("phoneOS") String phoneOS, @Param("phoneSize") String phoneSize);
+}

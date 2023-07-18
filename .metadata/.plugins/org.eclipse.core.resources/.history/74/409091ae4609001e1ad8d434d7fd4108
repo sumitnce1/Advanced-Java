@@ -1,0 +1,52 @@
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.SQLException"%>
+<%@ page import="org.sumitshop.hibernate.entity.Product" %>
+<%@ page import="org.hibernate.Session" %>
+<%@ page import="org.hibernate.SessionFactory" %>
+<%@ page import="org.hibernate.cfg.Configuration" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+</head>
+<body>
+    <%
+        SessionFactory hibernateFactory = (SessionFactory) application.getAttribute("hibernateFactory");
+        try (Session hibernateSession = hibernateFactory.openSession()) {
+            String tmpCategoryId = request.getParameter("categoryId");
+            int categoryId = Integer.parseInt(tmpCategoryId);
+
+            Query query = hibernateSession.createQuery("from Product p where p.category.id = :categoryId");
+            query.setParameter("categoryId", categoryId);
+            List<Product> products = query.getResultList();
+
+            %>
+            Welcome User <b><%= session.getAttribute("userName") %></b>.
+            <br>
+            <table border='1'>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Image</th>
+                    <th>Add to Cart</th>
+                </tr>
+                <% for (Product product : products) { %>
+                    <tr>
+                        <td><%= product.getName() %></td>
+                        <td><%= product.getDescription() %></td>
+                        <td><%= product.getPrice() %></td>
+                        <td><img src='Images/<%= product.getImageUrl() %>' height='60px' width='60px' /></td>
+                        <td><a href='AddCart?categoryId=<%= categoryId %>&productId=<%= product.getId() %>'>Add to Cart</a></td>
+                    </tr>
+                <% } %>
+            </table>
+            <%
+        }
+    %>
+</body>
+</html>

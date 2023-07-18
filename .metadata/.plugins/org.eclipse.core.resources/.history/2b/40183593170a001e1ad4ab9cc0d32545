@@ -1,0 +1,27 @@
+# Connection properties
+db.url=jdbc:mysql://localhost/javaee_0016
+db.username=root
+db.password=Admin@123
+db.driver_class=com.mysql.cj.jdbc.Driver
+
+# SQL Queries
+sql.adduser=insert into users_0016 values (?,?,?,?,?,?)
+sql.updateUser=update users_0016 set password=?, name=?, email=? where username=?
+sql.deleteUser=delete from users_0016 where userName=?
+sql.changePassword=update users_0016 set password=? where userName=?
+sql.allUsers=select * from users_0016
+sql.userByUserName=select * from users_0016 where userName=?
+
+#SQL Category Queries
+sql.addCategory=insert into category_1234 values (?,?,?,?)
+sql.updateCategory=update category_1234 set categoryName=?, categoryDescription=?, categoryImageUrl=? where categoryId=?
+sql.deleteCategory=delete from category_1234 where categoryId=?
+sql.allCategory=select * from category_1234
+sql.categoryByCategoryId=select * from category_1234 where categoryId=?
+
+#SQL Product Queries
+sql.addProduct=insert into products_1234 values (?,?,?,?)
+sql.updateProduct=update products_1234 set categoryId=?, productName=?, productDescription=?, , productPrice=?, , productImageUrl=? where productId=?
+sql.deleteProduct=delete from products_1234 where productId=?
+sql.allCategory=select * from products_1234
+sql.categoryByCategoryId=select * from products_1234 where productId=?

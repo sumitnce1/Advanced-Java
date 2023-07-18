@@ -1,0 +1,42 @@
+package org.sumitexam.app.SumitFinalExam.controllers;
+
+package org.sumit.spring.boot.competeapp.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import org.sumit.spring.boot.competeapp.dto.MobilePhoneDTO;
+import org.sumit.spring.boot.competeapp.services.MobilePhoneService;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/mobile_0016") // API URI with PRN 0016
+public class MobilePhoneController {
+
+    private final MobilePhoneService mobilePhoneService;
+
+    @Autowired
+    public MobilePhoneController(MobilePhoneService mobilePhoneService) {
+        this.mobilePhoneService = mobilePhoneService;
+    }
+
+    @PostMapping("/create_0016") // Create a new MobilePhone object entry in the database using POST and form parameters
+    public boolean createMobilePhone(@RequestBody MobilePhoneDTO mobilePhoneDTO) {
+        return mobilePhoneService.createMobilePhone(mobilePhoneDTO);
+    }
+
+    @GetMapping("/getAllMobiles_0016") // Retrieve all mobiles in the database and return them in JSON format using GET
+    public List<MobilePhoneDTO> getAllMobiles() {
+        return mobilePhoneService.getAllMobiles();
+    }
+
+    @GetMapping("/getMobileDetail_0016/{mobileid}") // Fetch the details of a mobile with a specific mobile id using GET and path variable
+    public MobilePhoneDTO getMobileDetail(@PathVariable("mobileid") Long mobileId) {
+        return mobilePhoneService.getMobileDetail(mobileId);
+    }
+
+    @PostMapping("/updateMobileDetail_0016/{mobileid}") // Update the details of a mobile with a specific mobile id using POST and form data parameters
+    public MobilePhoneDTO updateMobileDetail(@PathVariable("mobileid") Long mobileId, @RequestBody MobilePhoneDTO mobilePhoneDTO) {
+        return mobilePhoneService.updateMobileDetail(mobileId, mobilePhoneDTO);
+    }
+}

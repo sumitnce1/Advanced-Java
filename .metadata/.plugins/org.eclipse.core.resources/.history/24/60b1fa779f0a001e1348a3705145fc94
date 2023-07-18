@@ -1,0 +1,10 @@
+package org.sumit.mvcuserapp.dao;
+
+import org.sumit.mvcuserapp.beans.Category;
+import org.sumit.mvcuserapp.beans.User;
+
+public interface CategoryDAO {
+	public boolean newCategory (User objCategory);
+	public boolean getCategoryById (Category objCategory);
+	public boolean allCategory (Category objCategory);
+}

@@ -1,0 +1,26 @@
+package org.sumitshop.cart;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Cart {
+    private Map<Integer, Integer> products;
+
+    public Cart() {
+        products = new HashMap<>();
+    }
+
+    public void addProduct(int categoryId, int productId) {
+        int quantity = products.getOrDefault(productId, 0);
+        products.put(productId, quantity + 1);
+    }
+
+    public Map<Integer, Integer> getProducts() {
+        return products;
+    }
+
+	public void add(CartItem item) {
+		// TODO Auto-generated method stub
+		
+	}
+}

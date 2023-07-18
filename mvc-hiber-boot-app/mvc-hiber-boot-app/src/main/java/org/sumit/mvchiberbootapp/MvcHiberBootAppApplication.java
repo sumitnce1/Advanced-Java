@@ -1,0 +1,14 @@
+package org.sumit.mvchiberbootapp;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
+@SpringBootApplication(scanBasePackages = {"org.sumit.mvchiberbootapp.controllers"})
+@EntityScan(basePackages = {"org.sumit.mvchiberbootapp.entity"})
+public class MvcHiberBootAppApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(MvcHiberBootAppApplication.class, args);
+	}
+}

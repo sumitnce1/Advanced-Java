@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Add Category</title>
+</head>
+<body>
+    <h2 style="color: green; text-align: center;">Add Category</h2>
+    <hr color="red" size="5"/>
+
+    <form action="AddProduct" method="POST">
+        <pre style="text-align: center;">
+            Category ID          :<input type="text" name="categoryName" />
+            
+            Product Name         :<input type="text" name="categoryName" />
+            Product Name         :<input type="text" name="categoryName" />
+        
+            Product Description  :<input type="text" name="categoryDescription"/>
+        
+            Product Image        :<input type="text" name="categoryImageUrl" /><br>
+            <input type="submit" value="Add Category" />
+        </pre>
+    </form>
+</body>
+</html>

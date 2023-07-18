@@ -1,0 +1,10 @@
+package org.sumit.spring.boot.competeapp.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.sumit.spring.boot.competeapp.entity.User;
+
+public interface UserRepository extends JpaRepository<User, String> {
+	@Query("update User oUser set oUser.password=:pwd where oUser.userName=:uname")
+	
+}

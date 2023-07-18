@@ -1,0 +1,70 @@
+package org.sumit.spring.firstspringapp.beans;
+
+import java.util.Date;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
+public class AmazonAccount implements Account {
+	boolean isPrimeMember;
+	Date creationDate;
+	
+	@Autowired
+	User objUser;
+	
+	
+	
+	@Override
+	public boolean createAccount() {
+		System.out.println("Amazon Account Created");
+		creationDate = new Date();
+		isPrimeMember = true;
+		return true;
+	}
+
+	@Override
+	public User getUser() {
+		// TODO Auto-generated method stub
+		return objUser;
+	}
+
+	@Override
+	public void showDetails() {
+		System.out.println("Amazon Account");
+		System.out.println("Is Prime :" + isPrimeMember);
+		System.out.println("Created on : " +creationDate);
+		System.out.println("User : " + objUser);
+
+	}
+
+	public boolean isPrimeMember() {
+		return isPrimeMember;
+	}
+
+	public void setPrimeMember(boolean isPrimeMember) {
+		this.isPrimeMember = isPrimeMember;
+	}
+
+	public Date getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	public User getObjUser() {
+		return objUser;
+	}
+
+	public void setObjUser(User objUser) {
+		this.objUser = objUser;
+	}
+
+	@Override
+	public String toString() {
+		return "AmazonAccount [isPrimeMember=" + isPrimeMember + ", creationDate=" + creationDate + ", objUser="
+				+ objUser + "]";
+	}	
+}

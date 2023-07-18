@@ -1,0 +1,14 @@
+package org.sumit.mvcuserapp.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.sumit.mvcuserapp.dao.CategoryDAO;
+import org.sumit.mvcuserapp.dao.UserDAO;
+
+@Controller
+public class CategoryController {
+	
+	@Autowired
+    CategoryDAO categoryDAO;
+
+}

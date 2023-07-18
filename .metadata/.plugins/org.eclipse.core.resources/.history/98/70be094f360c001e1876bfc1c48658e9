@@ -1,0 +1,5 @@
+package org.sumit.boot.rest.bootresthiber.dto;
+
+public class ContactDTO {
+
+}

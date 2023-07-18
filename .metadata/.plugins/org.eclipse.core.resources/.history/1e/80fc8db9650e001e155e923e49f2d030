@@ -1,0 +1,44 @@
+package org.sumitexam.app.SumitFinalExam.services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.sumitexam.app.SumitFinalExam.dto.MobilePhoneDTO;
+import org.sumitexam.app.SumitFinalExam.entity.MobilePhone;
+import org.sumitexam.app.SumitFinalExam.repository.MobilePhoneRepository;
+
+@Service
+public class MobilePhoneServiceImpl implements MobilePhoneService 
+{
+	@Autowired
+	MobilePhoneRepository mobilePhoneRepository;
+	
+	@Override
+	public boolean createMobilePhone(MobilePhoneDTO mobilePhoneDTO) {
+		// TODO Auto-generated method stub
+		MobilePhone mobilePhoneEntity = new MobilePhone();
+        BeanUtils.copyProperties(mobilePhoneDTO, mobilePhoneEntity);
+        mobilePhoneRepository.save(mobilePhoneEntity);
+        return true;
+	}
+
+	@Override
+	public List<MobilePhoneDTO> getAllMobiles() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public MobilePhoneDTO getMobileDetail(int mobileId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public MobilePhoneDTO updateMobileDetail(int mobileId, MobilePhoneDTO mobilePhoneDTO) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

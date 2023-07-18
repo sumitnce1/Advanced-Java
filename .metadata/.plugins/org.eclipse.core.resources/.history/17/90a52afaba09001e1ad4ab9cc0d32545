@@ -1,0 +1,9 @@
+package org.sumit.spring.firstspringapp.beans;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class User {
+	String userName;
+	String password;	
+}

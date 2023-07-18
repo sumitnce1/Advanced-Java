@@ -1,0 +1,58 @@
+package org.sumitshopuser.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import org.apache.catalina.User;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
+
+public class UserDAOImpl implements UserDAO {
+	private Session session;
+
+	public UserDAOImpl(Session session) {
+		this.session = session;
+	}
+
+	public UserDAOImpl() {
+	}
+
+	public void setSession(Session session) {
+		this.session = session;
+	}
+
+    @Override
+    public boolean authenticate(String userName, String password) {
+        Query<User> query = session.createQuery("SELECT user FROM User user WHERE user.userName =:userName AND user.password =:password");
+        query.setParameter("userName", userName);
+        query.setParameter("password", password);
+        User user = query.uniqueResult();
+        return user != null;
+    }
+
+    @Override
+    public boolean registerUser(String userName, String password, String name, String email, String phone, String city) {
+        Users users = new Users();
+        users.setUserName(userName);
+        users.setPassword(password);
+        users.setName(name);
+        users.setEmail(email);
+        users.setPhone(phone);
+        users.setCity(city);
+
+        session.save(users);
+        return user.getUserName() != null;
+    }
+
+    @Override
+    public boolean changePassword(String userName, String password) {
+        int rowsUpdated = session.createQuery("UPDATE User u SET u.password = :password WHERE u.userName = :userName")
+                .setParameter("password", password)
+                .setParameter("userName", userName)
+                .executeUpdate();
+
+        return rowsUpdated > 0;
+    }
+}

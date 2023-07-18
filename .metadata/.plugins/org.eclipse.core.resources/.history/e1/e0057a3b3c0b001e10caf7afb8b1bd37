@@ -1,0 +1,13 @@
+package org.sumit.hiberbootapp.entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="products_1234")
+public class Product {
+	
+	int categoryId;
+	
+
+}

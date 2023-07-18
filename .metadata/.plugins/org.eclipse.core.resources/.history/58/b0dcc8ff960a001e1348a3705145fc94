@@ -1,0 +1,6 @@
+package org.sumit.mvcuserapp.dao;
+
+public interface UserDAO {
+	public boolean authenticate(String userName, String password);
+	public boolean newUser(User objUser);
+}

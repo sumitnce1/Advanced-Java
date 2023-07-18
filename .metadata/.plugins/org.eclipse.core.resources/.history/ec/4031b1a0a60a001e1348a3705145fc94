@@ -1,0 +1,30 @@
+package org.sumit.mvcuserapp.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.sumit.mvcuserapp.beans.Category;
+import org.sumit.mvcuserapp.beans.Product;
+import org.sumit.mvcuserapp.dao.CategoryDAO;
+import org.sumit.mvcuserapp.dao.ProductDAO;
+
+public class ProductController {
+	@Autowired
+	ProductDAO productDAO;
+	
+	@RequestMapping("/newProduct")
+    public void prepareNewCategory(Model data) {
+        data.addAttribute("objProduct", new Category());
+    }
+    
+    @RequestMapping("/registerProduct")
+    public String registerNewProduct(@ModelAttribute("objProduct") Product objProduct) {
+        boolean status = productDAO.newProduct(objProduct);
+        if (status) {
+            return "catregistered";
+        } else {
+            return "catregistrationFailed";
+        }
+    }
+}

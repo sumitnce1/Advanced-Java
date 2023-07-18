@@ -1,0 +1,13 @@
+package org.sumit.mvcbootapp;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication(scanBasePackages = {"org.sumit.mvcbootapp.beans","org.sumit.mvcbootapp.controllers" })
+public class MvcBootAppApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(MvcBootAppApplication.class, args);
+	}
+
+}

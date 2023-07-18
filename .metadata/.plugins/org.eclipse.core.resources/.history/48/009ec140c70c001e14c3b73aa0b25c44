@@ -1,0 +1,6 @@
+package org.sumit.spring.boot.competeapp.dto;
+
+public class CategoryDTO {
+	String categoryId;
+	
+}

@@ -1,0 +1,21 @@
+package org.sumit.mvcuserapp.beans;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="category_1234")
+public class Category {
+	@Id
+	@Column(name="categoryId")
+	int categoryId;
+	
+	String categoryName;
+	
+	String categoryDescription;
+	
+	String categoryImageUrl;
+}
+

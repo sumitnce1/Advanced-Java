@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="org.sumit.hibernate.Users" table="users_0016">
+		<id name="userName" column="username" type="java.lang.String"></id>
+		<property name="password" column="password" type="java.lang.String"></property>
+		<property name="name" column="name" type="java.lang.String"></property>
+		<property name="email" column="email" type="java.lang.String"></property>
+		<property name="phone" column="phone" type="java.lang.String"></property>
+		<property name="city" column="city" type="java.lang.String"></property>
+	</class>
+	
+	<class name="org.sumit.hibernate.Category" table="category_1234">
+		<id name="categoryId" column="categoryId" type="java.lang.String"></id>
+		<property name="categoryName" column="categoryName" type="java.lang.String"></property>
+		<property name="categoryDescription" column="categoryDescription" type="java.lang.String"></property>
+		<property name="categoryImageUrl" column="categoryImageUrl" type="java.lang.String"></property>
+	</class>
+	
+	<class name="org.sumit.hibernate.Card" table="cards_0016">
+		<id name="cardNo" column="cardNo" type="java.lang.String"></id>
+		<property name="expiry" column="expiry" type="java.lang.String"></property>
+		<property name="balance" column="balance" type="java.lang.String"></property>
+		<property name="status" column="status" type="java.lang.String"></property>
+	</class>
+</hibernate-mapping>    

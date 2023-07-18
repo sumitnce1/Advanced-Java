@@ -1,0 +1,21 @@
+package org.sumit.mvcuserapp.dao;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.sumit.mvcuserapp.beans.Category;
+
+public class CategoryDAOImpl implements CategoryDAO {
+
+	@Override
+	public boolean newCategory(Category objCategory) {
+		try (Session hibernateSession = hibernateFactory.openSession()) {
+            hibernateSession.beginTransaction();
+            hibernateSession.save(objUser);
+            hibernateSession.getTransaction().commit();
+            return true;
+        } catch (HibernateException he) {
+            he.printStackTrace();
+        }
+        return false;
+    }
+}

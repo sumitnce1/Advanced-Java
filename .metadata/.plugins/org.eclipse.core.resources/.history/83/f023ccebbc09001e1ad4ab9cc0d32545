@@ -1,0 +1,32 @@
+package org.sumit.spring.firstspringapp.beans;
+
+import java.util.Date;
+
+public class AmazonAccount implements Account {
+	boolean isPrimeMember;
+	Date creationDate;
+	User objUser;
+	@Override
+	public boolean createAccount() {
+		System.out.println("Amazon Account Created");
+		creationDate = new Date();
+		isPrimeMember = true;
+		return false;
+	}
+
+	@Override
+	public User getUser() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void showDetails() {
+		System.out.println("Amazon Account");
+		System.out.println("Amazon Account");
+		System.out.println("Amazon Account");
+		System.out.println("User : " + objUser);
+
+	}
+
+}

@@ -1,0 +1,5 @@
+package org.sumit.boot.rest.firstrestapp.controllers;
+
+public class WelcomeController {
+
+}

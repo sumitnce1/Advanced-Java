@@ -1,0 +1,15 @@
+package org.sumit.spring.boot.competeapp;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+
+@SpringBootApplication(scanBasePackages = )
+@EnableJpaRepositories(basePackages = {"org.sumit.spring.boot.competeapp.repository"})
+
+public class CompeteAppApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(CompeteAppApplication.class, args);
+	}
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="5.0" xmlns="https://jakarta.ee/xml/ns/jakartaee"
+	xmlns:xml="http://www.w3.org/XML/1998/namespace"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd">
+
+	<!-- Servlet entry either thru Annotation or in Deployment descriptor -->
+	<context-param>
+    <param-name>driverClass</param-name>
+    <param-value>com.mysql.cj.jdbc.Driver</param-value>
+</context-param>
+<context-param>
+    <param-name>dbUrl</param-name>
+    <param-value>jdbc:mysql://localhost/javaee_0016</param-value>
+</context-param>
+<context-param>
+    <param-name>dbUserName</param-name>
+    <param-value>root</param-value>
+</context-param>
+<context-param>
+    <param-name>dbPassword</param-name>
+    <param-value>Admin@123</param-value>
+</context-param>
+<context-param>
+    <param-name>cart</param-name>
+    <param-value>org.sumit.cart.ProductCart</param-value>
+</context-param>
+
+</web-app>

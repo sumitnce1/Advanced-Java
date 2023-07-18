@@ -1,0 +1,6 @@
+package org.sumit.spring.boot.competeapp.controllers;
+
+Rest
+public class UserController {
+
+}

@@ -1,0 +1,22 @@
+package org.sumit.mvchiberbootapp.controllers;
+
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class CategoryController {
+
+    @Autowired
+    SessionFactory hibernateFactory;
+
+    @RequestMapping("/category")
+    public ModelAndView showAllCategories() {
+        try (Session hibernateSession = hibernateFactory.openSession()) {
+            Query<Category> query = hibernateSession.createQuery("FROM Category", Category.class);
+            List<Category> listCategory = query.getResultList();
+            return new ModelAndView("showcategory", "data", listCategory);
+        }
+    }
+}

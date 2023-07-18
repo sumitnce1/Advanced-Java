@@ -1,0 +1,12 @@
+package org.sumitexam.app.SumitFinalExam.services;
+
+import org.sumitexam.app.SumitFinalExam.dto.MobilePhoneDTO;
+
+import java.util.List;
+
+public interface MobilePhoneService {
+    boolean createMobilePhone(MobilePhoneDTO mobilePhoneDTO);
+    List<MobilePhoneDTO> getAllMobiles();
+    MobilePhoneDTO getMobileDetail(Long mobileId);
+    MobilePhoneDTO updateMobileDetail(Long mobileId, MobilePhoneDTO mobilePhoneDTO);
+}

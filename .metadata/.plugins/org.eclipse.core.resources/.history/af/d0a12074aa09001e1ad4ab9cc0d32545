@@ -1,0 +1,16 @@
+package org.sumit.spring;
+
+import org.springframework.stereotype.Component;
+@Component("objUser") I public class Users {
+String userName ="default";
+String password ="default! 1234"; public string getUserName() {
+return userName;
+} public void setUserName (String userName) { this.userName = userName;
+}
+public string getPassword() { return password;
+}
+public void setPassword(String password) { this.password = password;
+} @Override
+public string toString() { return "Users [userName=" + userName + password=" + password + "]";
+}
+}

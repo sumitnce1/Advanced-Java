@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;Users.java&apos; to &apos;SecondSpringApp/src/org.sumit.spring&apos;&#x0D;&#x0A;- Original project: &apos;FirstSpringApp&apos;&#x0D;&#x0A;- Destination element: &apos;SecondSpringApp/src/org.sumit.spring&apos;&#x0D;&#x0A;- Original element: &apos;org.sumit.spring.Users.java&apos;" description="Copy compilation unit" destination="=SecondSpringApp/src&lt;org.sumit.spring" element1="/src&lt;org.sumit.spring{Users.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1686632222605" units="1" version="1.0"/>
+</session>

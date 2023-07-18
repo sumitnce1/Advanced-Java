@@ -1,0 +1,18 @@
+package org.sumit.secondbootapp.beans;
+
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+@Component
+@Qualifier()
+public class User {
+	String UserName;
+	String password;
+	String name;
+	String email;
+	long phone;
+	String city;
+	
+	
+
+}

@@ -1,0 +1,34 @@
+package org.sumitexam.app.SumitFinalExam.services;
+
+import java.util.List;
+
+import org.sumitexam.app.SumitFinalExam.dto.MobilePhoneDTO;
+
+@Service
+public class MobilePhoneServiceImpl implements MobilePhoneService {
+
+	@Override
+	public boolean createMobilePhone(MobilePhoneDTO mobilePhoneDTO) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public List<MobilePhoneDTO> getAllMobiles() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public MobilePhoneDTO getMobileDetail(int mobileId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public MobilePhoneDTO updateMobileDetail(int mobileId, MobilePhoneDTO mobilePhoneDTO) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

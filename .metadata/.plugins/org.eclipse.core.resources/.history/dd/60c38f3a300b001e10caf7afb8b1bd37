@@ -1,0 +1,16 @@
+package org.sumit.secondbootapp.beans;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class User {
+	String UserName;
+	String password;
+	String name;
+	String email;
+	long phone;
+	String city;
+	
+	
+
+}

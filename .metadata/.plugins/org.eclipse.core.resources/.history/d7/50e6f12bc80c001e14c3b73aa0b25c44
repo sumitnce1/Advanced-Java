@@ -1,0 +1,6 @@
+package org.sumit.spring.boot.competeapp.entity;
+
+public class User {
+
+	
+}

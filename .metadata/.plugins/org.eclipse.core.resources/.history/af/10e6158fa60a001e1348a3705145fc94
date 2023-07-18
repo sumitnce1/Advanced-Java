@@ -1,0 +1,8 @@
+package org.sumit.mvcuserapp.dao;
+
+import org.sumit.mvcuserapp.beans.Category;
+
+public interface ProductDAO {
+
+	public boolean newProduct (Category objCategory);
+}

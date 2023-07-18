@@ -1,0 +1,9 @@
+package org.sumit.hiberbootapp.entity;
+
+import jakarta.persistence.Entity;
+
+@Entity
+@T
+public class Category {
+
+}

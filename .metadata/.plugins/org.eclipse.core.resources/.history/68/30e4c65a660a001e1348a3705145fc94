@@ -1,0 +1,6 @@
+package org.sumit.firstmvcapp.controllers;
+
+
+public class WelcomeControler {
+
+}

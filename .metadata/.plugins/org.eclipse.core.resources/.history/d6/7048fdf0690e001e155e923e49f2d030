@@ -1,0 +1,71 @@
+package org.sumitexam.app.SumitFinalExam.services;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.sumitexam.app.SumitFinalExam.dto.MobilePhoneDTO;
+import org.sumitexam.app.SumitFinalExam.entity.MobilePhone;
+import org.sumitexam.app.SumitFinalExam.repository.MobilePhoneRepository;
+
+@Service
+public class MobilePhoneServiceImpl implements MobilePhoneService 
+{
+	@Autowired
+	MobilePhoneRepository mobilePhoneRepository;
+
+	@Override
+	public boolean createMobilePhone(MobilePhoneDTO mobilePhoneDTO) {
+		// TODO Auto-generated method stub
+		MobilePhone mobilePhoneEntity = new MobilePhone();
+		BeanUtils.copyProperties(mobilePhoneDTO, mobilePhoneEntity);
+		mobilePhoneRepository.save(mobilePhoneEntity);
+		return true;
+	}
+
+	@Override
+	public List<MobilePhoneDTO> getAllMobiles() {
+		// TODO Auto-generated method stub
+		List<MobilePhone> mobilePhones = mobilePhoneRepository.findAll();
+		List<MobilePhoneDTO> listDTO = new ArrayList<>();
+
+		for (MobilePhone mobPhone : mobilePhones) {
+			MobilePhoneDTO dto = new MobilePhoneDTO();
+			BeanUtils.copyProperties(mobPhone, dto);
+			listDTO.add(dto);
+		}
+		return listDTO;
+	}
+
+	@Override
+	public MobilePhoneDTO getMobileDetail(int mobileId) {
+		// TODO Auto-generated method stub
+		Optional<MobilePhone> optionalMobilePhone = mobilePhoneRepository.findById(mobileId);
+		if (optionalMobilePhone.isPresent()) {
+			MobilePhoneDTO dto = new MobilePhoneDTO();
+			BeanUtils.copyProperties(optionalMobilePhone.get(), dto);
+			return dto;
+		} else {
+			return null;
+		}
+	}
+
+	@Override
+	public MobilePhoneDTO updateMobileDetail(int mobileId, MobilePhoneDTO mobilePhoneDTO) {
+		// TODO Auto-generated method stub
+		Optional<MobilePhone> optionalMobilePhone = mobilePhoneRepository.findById(mobileId);
+		if (optionalMobilePhone.isPresent()) {
+			MobilePhone mobilePhoneEntity = optionalMobilePhone.get();
+			BeanUtils.copyProperties(mobilePhoneDTO, mobilePhoneEntity);
+			mobilePhoneRepository.save(mobilePhoneEntity);
+			MobilePhoneDTO updatedDTO = new MobilePhoneDTO();
+			BeanUtils.copyProperties(mobilePhoneEntity, updatedDTO);
+			return updatedDTO;
+		} else {
+			return null;
+		}
+	}
+}

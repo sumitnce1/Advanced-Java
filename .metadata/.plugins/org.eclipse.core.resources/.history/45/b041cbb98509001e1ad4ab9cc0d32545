@@ -1,0 +1,70 @@
+package org.sumitshop.servlets;
+
+import java.io.IOException;
+
+import org.sumitshop.cart.Cart;
+import org.sumitshop.cart.CartFactory;
+import org.sumitshop.hibernate.entity.Product;
+import org.sumitshop.servlets.CartItem;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import jakarta.servlet.ServletConfig;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
+@WebServlet("/AddCart")
+public class AddCart extends HttpServlet {
+    private SessionFactory hibernateFactory;
+
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+        ServletContext application = getServletContext();
+        hibernateFactory = (SessionFactory) application.getAttribute("hibernateFactory");
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        if (session == null) {
+            response.sendRedirect("login.html");
+            return;
+        }
+
+        try (Session hibernateSession = hibernateFactory.openSession()) {
+            String tmp = request.getParameter("categoryId");
+            int categoryId = Integer.parseInt(tmp);
+
+            tmp = request.getParameter("prodId");
+            int prodId = Integer.parseInt(tmp);
+            Product product = hibernateSession.get(Product.class, prodId);
+
+            if (product != null) {
+                float productPrice = product.getProductPrice();
+                String productName = product.getProductName();
+                String productImageUrl = product.getProductImageUrl();
+                CartItem item = new CartItem(categoryId, productId, productName, productPrice, productImageUrl);
+
+                Cart cart = (Cart) session.getAttribute("cart");
+                if (cart == null) {
+                    cart = CartFactory.getInstance(getServletContext());
+                    session.setAttribute("cart", cart);
+                }
+
+                cart.add(item);
+            }
+            response.sendRedirect("ListCart");
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}

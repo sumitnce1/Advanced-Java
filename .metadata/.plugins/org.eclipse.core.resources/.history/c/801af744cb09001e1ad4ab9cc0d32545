@@ -1,0 +1,86 @@
+package org.sumit.spring.firstspringapp.beans;
+
+import java.util.Date;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
+public class FacebookAccount implements Account {
+	
+	public FacebookAccount() {
+		System.out.println("Defalut cunstructer  for Facebook Account");
+	}
+		
+    //@Autowired
+    User objUser;
+    boolean corporateAccount;
+    Date creationDate;
+    
+    @PostConstruct
+    public void initialize() 
+    {
+    	System.out.println("Inittization of the facbook account");
+    }
+    
+    @PreDestroy
+    public void initialize() 
+    {
+    	System.out.println("Inittization of the facbook account");
+    }
+    
+    
+    
+    @Override
+    public boolean createAccount() {
+        System.out.println("Facebook Account Created..");
+        creationDate = new Date();
+        return true;
+    }
+
+    @Override
+    public User getUser() {
+        return objUser;
+    }
+
+    @Override
+    public void showDetails() {
+        System.out.println("Facebook Account");
+        System.out.println("Is Corporate: " + corporateAccount);
+        System.out.println("Date Created: " + creationDate);
+        System.out.println("User Associated: " + objUser);
+    }
+
+    public User getObjUser() {
+        return objUser;
+    }
+
+    public void setObjUser(User objUser) {
+        this.objUser = objUser;
+    }
+
+    public boolean isCorporateAccount() {
+        return corporateAccount;
+    }
+
+    public void setCorporateAccount(boolean corporateAccount) {
+        this.corporateAccount = corporateAccount;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    @Override
+    public String toString() {
+        return "FacebookAccount [objUser=" + objUser + ", corporateAccount=" + corporateAccount + ", creationDate="
+                + creationDate + "]";
+    }
+}

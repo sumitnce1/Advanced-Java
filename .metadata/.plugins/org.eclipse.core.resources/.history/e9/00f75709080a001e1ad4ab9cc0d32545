@@ -1,0 +1,11 @@
+package org.sumit.spring.secondjdbcspring.entity;
+
+public class Category {
+	String categoryId;
+	String categoryName;
+	String name;
+	String email;
+	String phone;
+	String city;
+
+}
